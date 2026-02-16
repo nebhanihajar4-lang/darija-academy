@@ -3,456 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darija Academy - Apprenez le Marocain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Darija Academy - Apprenez l'arabe marocain (Darija) à Rabat. Cours en ligne et en présentiel avec une identité marocaine forte.">
+    <title>Darija Academy | L'excellence marocaine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ========================================
-           VARIABLES & RESET (IDENTITÉ MAROC)
-        ========================================
-        */
+           CSS: STYLES ET IDENTITÉ VISUELLE
+        ======================================== */
         :root {
+            /* Couleurs du drapeau marocain et palette complémentaire */
             --morocco-red: #C1272D;
             --morocco-green: #006233;
-            --sand-gold: #f4e4bc; /* Couleur sable/papier ancien */
-            --dark-gray: #333;
-            --light-gray: #f9f9f9;
-            --white: #ffffff;
-            --font-heading: 'Cairo', sans-serif;
-            --font-body: 'Poppins', sans-serif;
-            --transition: all 0.3s ease;
+            --sand-gold: #fdf6e3; /* Couleur sable clair pour les fonds */
+            --dark-text: #2c3e50;
+            --light-text: #ffffff;
+            --font-heading: 'Cairo', sans-serif; /* Pour les titres */
+            --font-body: 'Poppins', sans-serif; /* Pour le texte courant */
+            --section-spacing: 80px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; } /* Défilement fluide */
 
         body {
             font-family: var(--font-body);
-            color: var(--dark-gray);
+            color: var(--dark-text);
             line-height: 1.6;
-            background-color: var(--light-gray);
-            overflow-x: hidden;
+            background-color: #f9f9f9;
         }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-        }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; border-radius: 8px; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        /* Utilitaire pour les sections */
-        .section-padding {
-            padding: 80px 10%;
-        }
-
-        .text-center {
-            text-align: center;
-        }
+        /* Composants réutilisables */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section-padding { padding: var(--section-spacing) 0; }
+        .text-center { text-align: center; }
 
         .section-title {
             font-size: 2.5rem;
             color: var(--morocco-red);
-            margin-bottom: 10px;
-            position: relative;
+            margin-bottom: 40px;
             display: inline-block;
+            position: relative;
         }
-
+        
+        /* Ajout de l'étoile verte sous les titres */
         .section-title::after {
-            content: '★'; /* L'étoile du drapeau */
+            content: '★';
             display: block;
             color: var(--morocco-green);
             font-size: 1.5rem;
-            margin-top: 5px;
+            margin-top: -10px;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 12px 35px;
+            border-radius: 30px;
             font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
             border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
             background-color: var(--morocco-red);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(193, 39, 45, 0.4);
+            color: var(--light-text);
+            box-shadow: 0 4px 15px rgba(193, 39, 45, 0.3);
         }
+        .btn-primary:hover { background-color: var(--morocco-green); transform: translateY(-3px); }
 
-        .btn-primary:hover {
-            background-color: var(--morocco-green);
-            transform: translateY(-3px);
-        }
-
-        /* ========================================
-           NAVIGATION
-        ========================================
-        */
+        /* ================== NAVIGATION ================== */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--light-text);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 70px;
+            display: flex; align-items: center;
         }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 90%; margin: auto; }
+        .logo { font-size: 1.8rem; font-family: var(--font-heading); color: var(--morocco-green); font-weight: 700; }
+        .logo span { color: var(--morocco-red); }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--morocco-red); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--morocco-green); }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--morocco-green);
-            font-family: var(--font-heading);
-        }
-
-        .logo span {
-            color: var(--morocco-red);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--morocco-red);
-        }
-
-        /* Mobile Menu Icon */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ========================================
-           HERO SECTION
-        ========================================
-        */
+        /* ================== HERO SECTION ================== */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); /* Photo Chefchaouen/Maroc */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding-top: 80px;
+            /* Photo de Chefchaouen */
+            background: linear-gradient(rgba(0,60,30,0.6), rgba(193,39,45,0.4)), url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: var(--light-text);
+            padding-top: 70px;
         }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 30px; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+        /* ================== CULTURE GRID ================== */
+        .culture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .culture-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .culture-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .culture-card img { height: 220px; width: 100%; object-fit: cover; }
+        .culture-content { padding: 25px; }
+        .culture-content h3 { color: var(--morocco-green); margin-bottom: 15px; }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        /* ========================================
-           A PROPOS & CULTURE (Monuments/Food)
-        ========================================
-        */
-        .culture-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .culture-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .culture-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .culture-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .culture-content {
-            padding: 20px;
-        }
-
-        .culture-content h3 {
-            color: var(--morocco-green);
-            margin-bottom: 10px;
-        }
-
-        /* ========================================
-           TARIFS (ABONNEMENTS)
-        ========================================
-        */
-        .pricing-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-
+        /* ================== TARIFS (PRIX AUGMENTÉS) ================== */
+        .pricing-section { background-color: var(--sand-gold); }
+        .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .price-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--morocco-green);
-            position: relative;
+            background: #fff; padding: 40px 30px; border-radius: 20px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 5px solid var(--morocco-green);
+            flex: 1; min-width: 280px; max-width: 350px; transition: 0.3s;
         }
+        .price-card.featured { transform: scale(1.05); border-top-color: var(--morocco-red); position: relative; z-index: 2; }
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--dark-text); }
+        .price { font-size: 3rem; font-weight: 700; color: var(--morocco-red); margin-bottom: 20px; font-family: var(--font-heading); }
+        .price span { font-size: 1rem; color: #777; font-weight: 400; font-family: var(--font-body); }
+        .features-list { text-align: left; margin-bottom: 30px; }
+        .features-list li { margin-bottom: 12px; display: flex; align-items: center; }
+        .features-list i { color: var(--morocco-green); margin-right: 10px; }
 
-        .price-card.featured {
-            transform: scale(1.05);
-            border-top: 5px solid var(--morocco-red);
-        }
+        /* ================== AVIS CLIENTS ================== */
+        .reviews-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .review-card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); flex: 1; min-width: 280px; max-width: 350px; }
+        .stars { color: #FFD700; margin-bottom: 15px; }
+        .review-author { font-weight: 600; color: var(--morocco-green); margin-top: 15px; display: block; }
 
-        .price-card.featured::before {
-            content: 'Populaire';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--morocco-red);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
+        /* ================== CONTACT & FORMULAIRE ================== */
+        .contact-container { display: flex; gap: 50px; flex-wrap: wrap; }
+        .contact-info, .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 30px; }
+        .info-item i { font-size: 1.5rem; color: var(--morocco-red); margin-right: 20px; margin-top: 5px; }
+        .info-item h4 { margin-bottom: 5px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-input { width: 100%; padding: 12px 15px; border: 2px solid #eee; border-radius: 10px; font-family: inherit; transition: 0.3s; }
+        .form-input:focus { border-color: var(--morocco-green); outline: none; }
+        iframe { width: 100%; height: 250px; border-radius: 15px; border: none; margin-top: 20px; }
 
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark-gray);
-            margin: 20px 0;
-            font-family: var(--font-heading);
-        }
+        /* ================== FOOTER ================== */
+        footer { background: #222; color: #aaa; padding: 50px 0 20px; text-align: center; }
+        .footer-logo { font-size: 2rem; color: var(--morocco-red); font-family: var(--font-heading); margin-bottom: 20px; }
+        .social-icons { margin: 25px 0; }
+        .social-icons a { font-size: 1.5rem; margin: 0 15px; color: var(--light-text); }
+        .social-icons a:hover { color: var(--morocco-green); }
+        .copyright { border-top: 1px solid #333; padding-top: 20px; font-size: 0.9rem; }
 
-        .price span {
-            font-size: 1rem;
-            color: #777;
-        }
-
-        .price-features {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .price-features li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .price-features i {
-            color: var(--morocco-green);
-            margin-right: 10px;
-        }
-
-        /* ========================================
-           TEMOIGNAGES (AVIS CLIENTS)
-        ========================================
-        */
-        .testimonials {
-            background-color: var(--sand-gold);
-            text-align: center;
-        }
-
-        .reviews-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .review-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            width: 300px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .stars {
-            color: #FFD700;
-            margin-bottom: 15px;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-            justify-content: center;
-        }
-
-        .client-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        /* ========================================
-           INSCRIPTION & CONTACT
-        ========================================
-        */
-        .contact-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 50px;
-            justify-content: center;
-        }
-
-        .contact-info, .registration-form {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--morocco-red);
-            margin-right: 20px;
-            width: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--morocco-green);
-        }
-
-        /* ========================================
-           FOOTER
-        ========================================
-        */
-        footer {
-            background-color: var(--dark-gray);
-            color: var(--white);
-            padding: 50px 10% 20px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-family: var(--font-heading);
-            margin-bottom: 20px;
-            color: var(--morocco-red);
-        }
-
-        .social-links {
-            margin: 20px 0;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            color: var(--morocco-green);
-        }
-
-        .copyright {
-            border-top: 1px solid #555;
-            padding-top: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* ========================================
-           RESPONSIVE MEDIA QUERIES
-        ========================================
-        */
+        /* ================== RESPONSIVE MOBILE ================== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
+            .hero h1 { font-size: 2.5rem; }
+            .menu-toggle { display: block; }
             .nav-links {
-                display: none;
+                position: fixed; top: 70px; right: -100%; width: 80%; height: calc(100vh - 70px);
+                background: #fff; flex-direction: column; align-items: center; justify-content: center;
+                transition: 0.4s ease-in-out; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
-            
-            .menu-toggle {
-                display: block;
-            }
-
-            .section-padding {
-                padding: 60px 5%;
-            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; margin: 15px 0; }
+            .price-card.featured { transform: scale(1); }
         }
     </style>
 </head>
@@ -463,249 +182,232 @@
             <div class="logo">Darija <span>Academy</span></div>
             <div class="nav-links">
                 <a href="#accueil">Accueil</a>
-                <a href="#culture">Culture</a>
+                <a href="#culture">Découverte</a>
                 <a href="#tarifs">Abonnements</a>
-                <a href="#avis">Avis</a>
-                <a href="#inscription" class="btn btn-primary" style="padding: 8px 20px; color: white;">S'inscrire</a>
+                <a href="#avis">Témoignages</a>
+                <a href="#contact" class="btn btn-primary" style="padding: 10px 25px;">S'inscrire</a>
             </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </nav>
     </header>
 
     <section id="accueil" class="hero">
-        <h1>Apprenez la Darija avec Passion</h1>
-        <p>Plongez au cœur de l'identité marocaine. Maîtrisez la langue, découvrez la culture et vivez l'expérience locale.</p>
-        <a href="#inscription" class="btn btn-primary">Commencer l'Aventure</a>
+        <div class="container">
+            <h1>Maîtrisez la Darija, vivez le Maroc.</h1>
+            <p>Plus qu'une langue, une immersion totale dans la culture, l'histoire et l'hospitalité marocaine. Commencez votre voyage aujourd'hui.</p>
+            <a href="#tarifs" class="btn btn-primary">Voir nos offres</a>
+        </div>
     </section>
 
     <section id="culture" class="section-padding">
-        <div class="text-center">
-            <h2 class="section-title">Découvrez le Maroc</h2>
-            <p>Plus qu'une langue, c'est un voyage à travers nos monuments et nos saveurs.</p>
-        </div>
-
-        <div class="culture-grid">
-            <div class="culture-card">
-                <img src="https://images.unsplash.com/photo-1534015696582-7f91807d93d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tour Hassan Rabat">
-                <div class="culture-content">
-                    <h3>Monuments Historiques</h3>
-                    <p>Apprenez le vocabulaire pour visiter la Tour Hassan, la Kasbah des Oudayas et les médinas impériales.</p>
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">L'Identité Marocaine</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">Apprendre la langue, c'est aussi comprendre son contexte. Nos cours intègrent la richesse de notre patrimoine.</p>
+            </div>
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <img src="https://images.unsplash.com/photo-1534015696582-7f91807d93d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tour Hassan Rabat">
+                    <div class="culture-content">
+                        <h3>Histoire & Monuments</h3>
+                        <p>De la Tour Hassan aux anciennes Médinas, découvrez le vocabulaire architectural et historique.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="culture-card">
-                <img src="https://images.unsplash.com/photo-1512984860538-42f0672e816a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sahara Maroc">
-                <div class="culture-content">
-                    <h3>Activités Touristiques</h3>
-                    <p>Des excursions dans le désert aux randonnées dans l'Atlas, parlez avec les locaux en toute confiance.</p>
+                <div class="culture-card">
+                    <img src="https://images.unsplash.com/photo-1512984860538-42f0672e816a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Désert Marocain">
+                    <div class="culture-content">
+                        <h3>Aventure & Tourisme</h3>
+                        <p>Préparez vos excursions : négocier un taxi, réserver dans le désert ou demander votre chemin dans l'Atlas.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="culture-card">
-                <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Couscous Marocain">
-                <div class="culture-content">
-                    <h3>Gastronomie</h3>
-                    <p>Tajine, Couscous, Thé à la menthe... Apprenez à commander et à cuisiner les délices du Maroc.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tarifs" class="section-padding" style="background-color: #f4f4f4;">
-        <div class="text-center">
-            <h2 class="section-title">Nos Abonnements</h2>
-            <p>Des prix bas adaptés à tous les budgets pour apprendre sans stress.</p>
-        </div>
-
-        <div class="pricing-container">
-            <div class="price-card">
-                <h3>Mensuel</h3>
-                <div class="price">99 DH <span>/mois</span></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Accès aux cours vidéos</li>
-                    <li><i class="fas fa-check"></i> Exercices interactifs</li>
-                    <li><i class="fas fa-check"></i> Support par email</li>
-                </ul>
-                <a href="#inscription" class="btn btn-primary">Choisir</a>
-            </div>
-
-            <div class="price-card featured">
-                <h3>Trimestriel</h3>
-                <div class="price">250 DH <span>/3 mois</span></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Tout du pack Mensuel</li>
-                    <li><i class="fas fa-check"></i> 1 Session Live / mois</li>
-                    <li><i class="fas fa-check"></i> Guide de voyage PDF</li>
-                    <li><i class="fas fa-check"></i> Certificat de niveau</li>
-                </ul>
-                <a href="#inscription" class="btn btn-primary">Choisir</a>
-            </div>
-
-            <div class="price-card">
-                <h3>Annuel</h3>
-                <div class="price">800 DH <span>/an</span></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Tout inclus en illimité</li>
-                    <li><i class="fas fa-check"></i> Sessions Live Hebdomadaires</li>
-                    <li><i class="fas fa-check"></i> Coaching privé (1h)</li>
-                </ul>
-                <a href="#inscription" class="btn btn-primary">Choisir</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="avis" class="section-padding testimonials">
-        <div class="text-center">
-            <h2 class="section-title">Ce que disent nos étudiants</h2>
-        </div>
-
-        <div class="reviews-container">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"J'ai appris à négocier au souk en seulement 2 semaines ! La méthode est super efficace."</p>
-                <div class="client-info">
-                    <strong>- Sophie Martin, France</strong>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Darija Academy m'a aidé à me reconnecter avec mes origines. Le design du site est magnifique."</p>
-                <div class="client-info">
-                    <strong>- Karim El Idrissi, Belgique</strong>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Les prix sont imbattables pour la qualité des cours. Je recommande l'abonnement annuel."</p>
-                <div class="client-info">
-                    <strong>- John Smith, USA</strong>
+                <div class="culture-card">
+                    <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cuisine Marocaine Tajine">
+                    <div class="culture-content">
+                        <h3>Gastronomie Locale</h3>
+                        <p>Plongez dans les saveurs. Apprenez les noms des épices, des plats (Tajine, Couscous) et les traditions de table.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="inscription" class="section-padding">
-        <div class="text-center" style="margin-bottom: 50px;">
-            <h2 class="section-title">Rejoignez-nous</h2>
-        </div>
-
-        <div class="contact-section">
-            <div class="contact-info">
-                <h3>Nos Coordonnées</h3>
-                <p style="margin-bottom: 30px;">Nous sommes basés au cœur de la capitale.</p>
-                
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Adresse</h4>
-                        <p>Avenue Mohammed V, Rabat, Maroc</p>
-                    </div>
+    <section id="tarifs" class="section-padding pricing-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nos Formules d'Abonnement</h2>
+                <p>Des tarifs professionnels pour un apprentissage sérieux et complet.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Essentiel Mensuel</h3>
+                    <div class="price">149 DH <span>/mois</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Accès illimité à la plateforme</li>
+                        <li><i class="fas fa-check"></i> Vidéos et exercices interactifs</li>
+                        <li><i class="fas fa-check"></i> Support par email 24/7</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Choisir ce pack</a>
                 </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <h4>Téléphone</h4>
-                        <p>05674652910</p>
-                    </div>
+                <div class="price-card featured">
+                    <h3>Avancé Trimestriel</h3>
+                    <div class="price">399 DH <span>/3 mois</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Tous les avantages du pack Mensuel</li>
+                        <li><i class="fas fa-check"></i> 2 Sessions Live de groupe / mois</li>
+                        <li><i class="fas fa-check"></i> E-book "Guide de conversation"</li>
+                        <li><i class="fas fa-check"></i> Attestation de niveau</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Le plus populaire</a>
                 </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>contact@darija-academy.ma</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
-                    <iframe width="100%" height="200" frameborder="0" style="border:0" 
-                    src="https://maps.google.com/maps?q=Rabat,Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                <div class="price-card">
+                    <h3>Premium Annuel</h3>
+                    <div class="price">1200 DH <span>/an</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Accès VIP illimité 1 an</li>
+                        <li><i class="fas fa-check"></i> Sessions Live hebdomadaires</li>
+                        <li><i class="fas fa-check"></i> 3 heures de coaching privé</li>
+                        <li><i class="fas fa-check"></i> Certification officielle</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Choisir ce pack</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="registration-form">
-                <h3>Formulaire d'inscription</h3>
-                <form id="signupForm">
-                    <div class="form-group">
-                        <label>Nom complet</label>
-                        <input type="text" placeholder="Votre nom" required>
+    <section id="avis" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">La parole aux étudiants</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Grâce à Darija Academy, j'ai pu commander mon premier ftour tout seul à Rabat. Une fierté ! La méthode est top."</p>
+                    <span class="review-author">- Thomas L., Expatrié français</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>"J'adore le lien constant avec la culture. On n'apprend pas juste des mots, on apprend à vivre à la marocaine."</p>
+                    <span class="review-author">- Sarah B., Étudiante en échange</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Le pack annuel vaut vraiment le coup. Les coachings privés ont débloqué mon oral. Merci à l'équipe !"</p>
+                    <span class="review-author">- Mohamed K., MRE de retour au pays</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding" style="background: #fff;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contactez-nous & Inscription</h2>
+                <p style="margin-bottom: 40px;">Rejoignez la famille Darija Academy à Rabat.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Nos Coordonnées</h3>
+                    <p style="margin-bottom: 30px; color: #666;">Nous sommes situés au cœur de la capitale.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Avenue Mohammed V, Rabat, Maroc</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="Votre email" required>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>05674652910</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Téléphone</label>
-                        <input type="tel" placeholder="05674652910" required>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@darija-academy.ma</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Choix de l'abonnement</label>
-                        <select>
-                            <option value="mensuel">Mensuel (99 DH)</option>
-                            <option value="trimestriel">Trimestriel (250 DH)</option>
-                            <option value="annuel">Annuel (800 DH)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Valider l'inscription</button>
-                </form>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.696622461796!2d-6.839681684785744!3d34.01324298061675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c8896411303%3A0x68540445829346c8!2sAv.%20Mohammed%20V%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1620000000000!5m2!1sfr!2sma" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Formulaire de pré-inscription</h3>
+                    <form id="inscriptionForm">
+                        <div class="form-group">
+                            <label for="nom">Nom Complet</label>
+                            <input type="text" id="nom" class="form-input" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Numéro de Téléphone</label>
+                            <input type="tel" id="tel" class="form-input" placeholder="05674652910" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="abonnement">Choix de l'abonnement</label>
+                            <select id="abonnement" class="form-input" required>
+                                <option value="">Sélectionnez une formule</option>
+                                <option value="mensuel">Mensuel - 149 DH</option>
+                                <option value="trimestriel">Trimestriel - 399 DH</option>
+                                <option value="annuel">Annuel - 1200 DH</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Valider ma demande</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">Darija Academy</div>
-        <p>Le n°1 de l'apprentissage de la Darija au Maroc.</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Darija Academy. Tous droits réservés. Fait avec amour à Rabat.
+        <div class="container">
+            <div class="footer-logo">Darija <span>Academy</span></div>
+            <p>L'école de référence pour l'apprentissage de la Darija marocaine.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Darija Academy. Fait avec passion <span style="color:var(--morocco-red);">♥</span> à Rabat, Maroc.
+            </div>
         </div>
     </footer>
 
     <script>
-        // Gestion du menu mobile
+        // Script pour le menu mobile
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
         menuToggle.addEventListener('click', () => {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.width = '100%';
-                navLinks.style.padding = '20px';
-                navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
-            }
+            navLinks.classList.toggle('active');
+            // Change l'icône du menu (hamburger <-> croix)
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Animation au défilement (Scroll) pour la Navbar
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            }
+        // Fermer le menu mobile quand on clique sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
         });
 
         // Simulation d'envoi du formulaire
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
+        document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Merci ! Votre demande d\'inscription pour Darija Academy a bien été reçue. Nous vous contacterons au 05674652910.');
+            const nom = document.getElementById('nom').value;
+            const abo = document.getElementById('abonnement').value;
+            alert(`Merci ${nom} ! Votre demande de pré-inscription pour la formule "${abo}" a été reçue. Notre équipe vous contactera au 05674652910 pour finaliser.`);
             this.reset();
         });
     </script>
